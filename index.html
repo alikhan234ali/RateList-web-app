@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rate List</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="bg-pattern"></div>
+
+  <div class="app">
+    <header class="header">
+      <div class="brand">
+        <span class="brand-icon">₨</span>
+        <div>
+          <h1>Rate List</h1>
+          <p>Manage your product prices easily</p>
+        </div>
+      </div>
+      <button type="button" id="printBtn" class="btn-print" title="Print list">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="6 9 6 2 18 2 18 9"/>
+          <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
+          <rect x="6" y="14" width="12" height="8"/>
+        </svg>
+        Print
+      </button>
+    </header>
+
+    <section class="stats">
+      <div class="stat-card">
+        <span class="stat-num" id="statCount">0</span>
+        <span class="stat-label">Products</span>
+      </div>
+      <div class="stat-card highlight">
+        <span class="stat-num" id="statTotal">Rs. 0</span>
+        <span class="stat-label">Total Value</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-num" id="statAvg">Rs. 0</span>
+        <span class="stat-label">Average</span>
+      </div>
+    </section>
+
+    <main class="card">
+      <form id="productForm" class="product-form">
+        <div class="form-grid">
+          <div class="field">
+            <label for="productName">Product Name</label>
+            <input type="text" id="productName" placeholder="e.g. Rice 1kg" maxlength="80" autocomplete="off">
+          </div>
+          <div class="field">
+            <label for="productPrice">Price (Rs.)</label>
+            <input type="number" id="productPrice" placeholder="0" min="1" step="1">
+          </div>
+          <div class="field">
+            <label for="productCategory">Category</label>
+            <select id="productCategory">
+              <option value="General">General</option>
+              <option value="Grocery">Grocery</option>
+              <option value="Electronics">Electronics</option>
+              <option value="Clothing">Clothing</option>
+              <option value="Services">Services</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div class="field field-btn">
+            <button type="submit" id="submitBtn" class="btn-add">
+              <span id="submitText">Add Product</span>
+            </button>
+          </div>
+        </div>
+      </form>
+
+      <div class="toolbar">
+        <div class="search-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>
+          </svg>
+          <input type="text" id="searchInput" placeholder="Search products...">
+        </div>
+        <select id="categoryFilter" class="filter-select">
+          <option value="all">All Categories</option>
+          <option value="General">General</option>
+          <option value="Grocery">Grocery</option>
+          <option value="Electronics">Electronics</option>
+          <option value="Clothing">Clothing</option>
+          <option value="Services">Services</option>
+          <option value="Other">Other</option>
+        </select>
+        <select id="sortSelect" class="filter-select">
+          <option value="name-asc">Name A → Z</option>
+          <option value="name-desc">Name Z → A</option>
+          <option value="price-asc">Price Low → High</option>
+          <option value="price-desc">Price High → Low</option>
+        </select>
+      </div>
+
+      <div class="table-wrap">
+        <table class="rate-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Product</th>
+              <th>Category</th>
+              <th>Price</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="productTable"></tbody>
+        </table>
+
+        <div id="emptyState" class="empty-state">
+          <div class="empty-icon">🏷️</div>
+          <h3>No products yet</h3>
+          <p>Add your first product using the form above.</p>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <p>Rate List — HTML, CSS & JavaScript</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
